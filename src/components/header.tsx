@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { clinicName, mainNav, serviceNav } from "@/data/site";
@@ -14,7 +15,15 @@ export function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
-          <span className="brand-mark">PL</span>
+          <Image
+            src="/images/clinic/logo.png"
+            alt="Pure Life Homeopathy Logo"
+            width={64}
+            height={64}
+            className="brand-logo"
+            priority
+          />
+
           <span className="brand-copy">
             <strong>{clinicName}</strong>
             <small>Holistic Healing, Personalized Care</small>
@@ -57,6 +66,7 @@ export function Header() {
             >
               Services
             </button>
+
             <div className="nav-dropdown-menu">
               {serviceNav.map((item) => (
                 <Link
@@ -73,7 +83,10 @@ export function Header() {
             </div>
           </div>
 
-          <Link href="/contact-us#appointment" className="button button-primary">
+          <Link
+            href="/contact-us#appointment"
+            className="button button-primary"
+          >
             Book Appointment
           </Link>
         </nav>
