@@ -5,54 +5,49 @@ type SubmissionPayload = {
   values: Record<string, string>;
 };
 
-function getTransporter() {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT || 587);
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT || 587),
+  secure: Number(process.env.SMTP_PORT) === 465,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
-  if (!host || !user || !pass) {
-    throw new Error("SMTP environment variables are missing.");
+export async function sendSubmissionEmail(
+  payload: SubmissionPayload
+): Promise<void> {
+  const recipient = process.env.MAIL_TO || "purelifehomeopathy@gmail.com";
+  const sender = process.env.MAIL_FROM || process.env.SMTP_USER;
+
+  if (!sender) {
+    throw new Error("MAIL_FROM or SMTP_USER is not configured.");
   }
 
-  return nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: {
-      user,
-      pass
-    }
-  });
-}
-
-export async function sendSubmissionEmail(payload: SubmissionPayload) {
-  const to = process.env.MAIL_TO;
-  const from = process.env.MAIL_FROM || process.env.SMTP_USER;
-
-  if (!to || !from) {
-    throw new Error("MAIL_TO or MAIL_FROM is missing.");
-  }
-
-  const transporter = getTransporter();
   const subject =
     payload.formType === "appointment"
-      ? "New Appointment Request"
-      : "New Contact Form Submission";
+      ? "New Appointment Request - Pure Life Homeopathy"
+      : "New Contact Form Submission - Pure Life Homeopathy";
 
-  const lines = Object.entries(payload.values).map(
-    ([key, value]) => `<p><strong>${key}:</strong> ${value}</p>`
-  );
+  const html = `
+    <div style="font-family: Arial, sans-serif; padding:20px;">
+      <h2>${subject}</h2>
+      <table border="1" cellpadding="10" cellspacing="0" style="border-collapse:collapse;">
+        ${Object.entries(payload.values)
+          .map(
+            ([key, value]) =>
+              `<tr><td><strong>${key}</strong></td><td>${value}</td></tr>`
+          )
+          .join("")}
+      </table>
+    </div>
+  `;
 
   await transporter.sendMail({
-    to,
-    from,
+    from: sender,
+    to: recipient,
     subject,
-    html: `
-      <div style="font-family:Arial,sans-serif;color:#20353a">
-        <h2>${subject}</h2>
-        ${lines.join("")}
-      </div>
-    `
+    html,
   });
 }

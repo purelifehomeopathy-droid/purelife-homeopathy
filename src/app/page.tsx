@@ -58,23 +58,75 @@ export default function HomePage() {
           />
           <div className="hero-overlay" />
         </div>
+
         <div className="container hero-content">
           <div className="hero-copy fade-in">
-            <span className="eyebrow">Welcome to Pure Life Homeopathy</span>
-            <h1>Homeopathy for Holistic Healing, Personalized Care, Anytime, Anywhere</h1>
+            <span className="eyebrow">Pure Life Homeopathy • Vadodara</span>
+
+            <h1>
+              Expert Homeopathic Treatment for Piles, Fissure & Fistula
+            </h1>
+
             <p>
-              Natural treatment plans for skin conditions, hair concerns, kidney
-              stones, migraines, respiratory problems, digestive issues, and more.
+              Specialized non-surgical treatment for Piles, Fissure and Fistula.
+              We also provide personalized care for Migraine, Kidney Stones,
+              Skin Disorders, Hair Fall and other chronic health conditions.
             </p>
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "10px",
+                marginTop: "20px",
+                marginBottom: "24px"
+              }}
+            >
+              <span
+                style={{
+                  background: "rgba(255,255,255,0.15)",
+                  padding: "8px 14px",
+                  borderRadius: "999px"
+                }}
+              >
+                ✓ Piles Specialist
+              </span>
+
+              <span
+                style={{
+                  background: "rgba(255,255,255,0.15)",
+                  padding: "8px 14px",
+                  borderRadius: "999px"
+                }}
+              >
+                ✓ Fissure Specialist
+              </span>
+
+              <span
+                style={{
+                  background: "rgba(255,255,255,0.15)",
+                  padding: "8px 14px",
+                  borderRadius: "999px"
+                }}
+              >
+                ✓ Fistula Specialist
+              </span>
+            </div>
+
             <div className="hero-actions">
-              <Link href="/contact-us#appointment" className="button button-primary">
+              <Link
+                href="/contact-us#appointment"
+                className="button button-primary"
+              >
                 Book Appointment
               </Link>
+
               <a href={`tel:${phone}`} className="button button-secondary">
                 Call Us Now
               </a>
             </div>
           </div>
+
           <div className="hero-form fade-in">
             <InquiryForm formType="appointment" />
           </div>
@@ -86,8 +138,9 @@ export default function HomePage() {
           <SectionHeading
             centered
             title="Our Services"
-            description="Carefully designed treatments that mirror the reference experience while remaining fully editable and independent."
+            description="Specialized homeopathic treatments designed to address chronic and recurring health conditions through personalized, root-cause-focused care."
           />
+
           <div className="service-grid">
             {featuredServices.map((service) => (
               <ServiceCard key={service.slug} service={service} />
@@ -107,6 +160,7 @@ export default function HomePage() {
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
+
             <div className="stack-card">
               <Image
                 src="/images/clinic/logo.png"
@@ -116,19 +170,29 @@ export default function HomePage() {
               />
             </div>
           </div>
+
           <div className="split-copy fade-in">
             <span className="eyebrow">Welcome to Pure Life Homeopathy</span>
-            <h2>Root-cause-focused homeopathic care in Vadodara</h2>
+
+            <h2>
+              Specialized Homeopathic Care for Piles, Fissure & Fistula in
+              Vadodara
+            </h2>
+
             <p>
               Pure Life Homeopathy is a leading homeopathic clinic in Vadodara,
-              founded by Dr. Jay Ratnani, a highly skilled homeopathic physician
-              with six years of experience.
+              founded by Dr. Jay Ratnani, a dedicated homeopathic physician
+              committed to personalized and patient-centered care.
             </p>
+
             <p>
-              The clinic specializes in treating skin diseases, hair disorders,
-              piles, kidney stones, and migraines using safe and natural
-              homeopathic remedies tailored to each patient.
+              The clinic is known for specialized treatment of Piles, Fissure
+              and Fistula using safe and natural homeopathic remedies. We also
+              provide treatment for migraine, kidney stones, skin diseases,
+              hair disorders and other chronic health conditions with a
+              personalized approach.
             </p>
+
             <div className="feature-grid">
               {features.map((feature) => (
                 <article key={feature.title} className="mini-card">
@@ -149,6 +213,7 @@ export default function HomePage() {
             description="Efficient, patient-centered processes that combine expertise, compassionate care, and practical guidance."
             centered
           />
+
           <div className="process-grid">
             {processSteps.map((step, index) => (
               <article key={step.title} className="process-card fade-in">
@@ -168,11 +233,16 @@ export default function HomePage() {
             <h2>Personalized consultation and long-term wellness support</h2>
             <p>{address}</p>
           </div>
+
           <div className="callout-actions">
             <Link href="/contact-us" className="button button-primary">
               Contact Us
             </Link>
-            <Link href={`/services/${services[0].slug}`} className="button button-secondary">
+
+            <Link
+              href={`/services/${services[0].slug}`}
+              className="button button-secondary"
+            >
               Explore Services
             </Link>
           </div>

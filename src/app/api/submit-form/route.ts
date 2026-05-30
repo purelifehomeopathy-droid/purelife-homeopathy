@@ -1,30 +1,67 @@
 import { NextResponse } from "next/server";
 import { sendSubmissionEmail } from "@/lib/mailer";
 
-function isValidPayload(body: unknown) {
-  if (!body || typeof body !== "object") return false;
-  const payload = body as { formType?: string; values?: unknown };
-  if (!["contact", "appointment"].includes(payload.formType || "")) return false;
-  if (!payload.values || typeof payload.values !== "object") return false;
-  return true;
+type FormRequest = {
+formType: "contact" | "appointment";
+values: Record<string, string>;
+};
+
+function isValidPayload(body: unknown): body is FormRequest {
+if (!body || typeof body !== "object") {
+return false;
+}
+
+const payload = body as FormRequest;
+
+if (
+payload.formType !== "contact" &&
+payload.formType !== "appointment"
+) {
+return false;
+}
+
+if (!payload.values || typeof payload.values !== "object") {
+return false;
+}
+
+return true;
 }
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
+try {
+const body = await request.json();
 
-  if (!isValidPayload(body)) {
-    return NextResponse.json({ error: "Invalid form submission." }, { status: 400 });
-  }
+```
+if (!isValidPayload(body)) {
+  return NextResponse.json(
+    { error: "Invalid form submission." },
+    { status: 400 }
+  );
+}
 
-  try {
-    await sendSubmissionEmail(body);
-    return NextResponse.json({ ok: true });
-  } catch (error) {
-    const message =
+await sendSubmissionEmail(body);
+
+return NextResponse.json({
+  success: true,
+  message: "Form submitted successfully.",
+});
+```
+
+} catch (error) {
+console.error("Email submission error:", error);
+
+```
+return NextResponse.json(
+  {
+    success: false,
+    error:
       error instanceof Error
         ? error.message
-        : "Email delivery is not configured correctly.";
+        : "Failed to send email.",
+  },
+  { status: 500 }
+);
+```
 
-    return NextResponse.json({ error: message }, { status: 500 });
-  }
+}
 }

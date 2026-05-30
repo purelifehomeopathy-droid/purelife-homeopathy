@@ -263,38 +263,47 @@ export const services: Service[] = [
     ]
   },
   {
-    slug: "piles-fissures",
-    title: "Piles & Fissures",
-    metaTitle: "Piles & Fissures Treatment | Pure Life Homeopathy",
-    metaDescription:
-      "Natural treatment for piles, fissures, rectal pain, swelling, bleeding, and recurrence prevention.",
-    heroImage: "/images/services/piles-fissures.webp",
-    summary:
-      "Gentle and effective support for pain, swelling, bleeding, and recurrence in piles and fissures.",
-    intro:
-      "Piles and fissures can cause significant discomfort, especially during bowel movement. At Pure Life Homeopathy, care is centered on reducing pain and inflammation while addressing constipation and lifestyle triggers.",
+  slug: "piles-fissures",
+  title: "Piles, Fissure & Fistula",
+  metaTitle:
+    "Piles, Fissure & Fistula Treatment in Vadodara | Pure Life Homeopathy",
+  metaDescription:
+    "Specialized non-surgical homeopathic treatment for piles, fissure and fistula in Vadodara with focus on pain relief, healing and recurrence prevention.",
+  heroImage: "/images/services/piles-fissures.webp",
+  summary:
+    "Specialized non-surgical homeopathic treatment for Piles, Fissure and Fistula with focus on pain relief, healing and recurrence prevention.",
+   intro:
+  "Piles, fissure and fistula are among the most common anorectal disorders affecting quality of life. At Pure Life Homeopathy, treatment focuses on reducing pain, bleeding, burning sensation, swelling and recurrence through personalized homeopathic care and lifestyle guidance.",
     sections: [
       {
-        heading: "Symptoms Commonly Addressed",
+        heading: "Conditions & Symptoms Commonly Addressed",
         bullets: [
-          "Pain and burning during or after passing stool",
-          "Bleeding from piles or fissure strain",
-          "Swelling, irritation, and rectal discomfort",
-          "Constipation associated with recurring symptoms",
-          "Fear of bowel movement due to pain"
-        ]
+  "Pain and burning during or after passing stool",
+  "Bleeding from piles or fissure strain",
+  "Swelling and irritation around the anal region",
+  "Discharge and discomfort associated with fistula",
+  "Constipation and hard stool aggravating symptoms",
+  "Recurring anorectal complaints and fear of bowel movement"
+]
       },
       {
         heading: "Why Patients Choose This Approach",
         checklist: [
-          "Aims to reduce pain, swelling, and bleeding naturally",
-          "Addresses constipation and aggravating habits",
-          "Supports healing and comfort without invasive measures",
-          "Focuses on recurrence prevention over time"
-        ]
+  "Supports relief from pain, burning and bleeding",
+  "Addresses constipation and aggravating lifestyle factors",
+  "Provides non-surgical homeopathic management",
+  "Supports healing and long-term recurrence prevention"
+]
       }
     ]
   }
 ];
 
-export const featuredServices = services.slice(0, 6);
+export const featuredServices = [
+  services.find((s) => s.slug === "piles-fissures")!,
+  services.find((s) => s.slug === "kidney-stones")!,
+  services.find((s) => s.slug === "migraine-headaches")!,
+  services.find((s) => s.slug === "skin-diseases")!,
+  services.find((s) => s.slug === "hair-scalp-disorders")!,
+  services.find((s) => s.slug === "digestive-disorders")!
+];
