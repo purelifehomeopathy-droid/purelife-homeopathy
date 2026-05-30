@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 try {
 const body = await request.json();
 
-```
+
 if (!isValidPayload(body)) {
   return NextResponse.json(
     { error: "Invalid form submission." },
@@ -45,23 +45,21 @@ return NextResponse.json({
   success: true,
   message: "Form submitted successfully.",
 });
-```
 
 } catch (error) {
-console.error("Email submission error:", error);
+  console.error("Email submission error:", error);
 
-```
-return NextResponse.json(
-  {
-    success: false,
-    error:
-      error instanceof Error
-        ? error.message
-        : "Failed to send email.",
-  },
-  { status: 500 }
-);
-```
+  return NextResponse.json(
+    {
+      success: false,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Failed to send email.",
+    },
+    { status: 500 }
+  );
+}
 
 }
-}
+
