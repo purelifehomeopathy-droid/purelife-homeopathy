@@ -140,11 +140,12 @@ h4 {
 
 .nav-dropdown {
   position: relative;
+  padding-bottom: 14px;
 }
 
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 14px);
+  top: 100%;
   left: 0;
   width: 280px;
   display: grid;
@@ -155,10 +156,19 @@ h4 {
   box-shadow: var(--shadow);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(10px);
-  transition: 0.25s ease;
+  transform: translateY(0);
+  transition: all 0.25s ease;
+  z-index: 999;
 }
 
+.nav-dropdown-menu a {
+  padding: 8px 6px;
+  border-radius: 8px;
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(31, 124, 122, 0.08);
+}
 .nav-dropdown.is-open .nav-dropdown-menu {
   opacity: 1;
   pointer-events: auto;

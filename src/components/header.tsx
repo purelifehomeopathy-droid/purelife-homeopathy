@@ -54,18 +54,13 @@ export function Header() {
             </Link>
           ))}
 
-          <div
-            className={`nav-dropdown ${servicesOpen ? "is-open" : ""}`}
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
-          >
+          <div className="nav-dropdown">
             <button
-              type="button"
-              className="nav-dropdown-trigger"
-              onClick={() => setServicesOpen((value) => !value)}
-            >
-              Services
-            </button>
+  type="button"
+  className="nav-dropdown-trigger"
+>
+  Services
+</button>
 
             <div className="nav-dropdown-menu">
               {serviceNav.map((item) => (
