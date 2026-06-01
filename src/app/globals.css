@@ -140,7 +140,8 @@ h4 {
 
 .nav-dropdown {
   position: relative;
-  padding-bottom: 14px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-dropdown-menu {
@@ -161,6 +162,11 @@ h4 {
   z-index: 999;
 }
 
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
 .nav-dropdown-menu a {
   padding: 8px 6px;
   border-radius: 8px;
