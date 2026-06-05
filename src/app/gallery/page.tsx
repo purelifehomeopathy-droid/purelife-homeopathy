@@ -1,16 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import type { Metadata } from "next";
 import { useEffect, useState } from "react";
 
 const images = [
-  "/images/gallery/Clinic-1.jpeg",
-  "/images/gallery/Clinic-2.jpeg",
-  "/images/gallery/Clinic-3.jpeg",
-  "/images/gallery/Clinic-4.jpeg",
-  "/images/gallery/Clinic-5.jpeg",
-  "/images/gallery/Clinic-6.jpeg"
+  "/images/Gallery/Clinic-1.jpeg",
+  "/images/Gallery/Clinic-2.jpeg",
+  "/images/Gallery/Clinic-3.jpeg",
+  "/images/Gallery/Clinic-4.jpeg",
+  "/images/Gallery/Clinic-5.jpeg",
+  "/images/Gallery/Clinic-6.jpeg",
 ];
 
 export default function GalleryPage() {
@@ -23,14 +22,6 @@ export default function GalleryPage() {
 
     return () => clearInterval(timer);
   }, []);
-
-  const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) => (prev - 1 + images.length) % images.length);
-  };
 
   return (
     <main className="inner-page">
@@ -49,7 +40,6 @@ export default function GalleryPage() {
           style={{
             maxWidth: "1100px",
             margin: "0 auto",
-            position: "relative"
           }}
         >
           <div
@@ -59,7 +49,8 @@ export default function GalleryPage() {
               height: "650px",
               borderRadius: "24px",
               overflow: "hidden",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
+              boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+              background: "#ffffff",
             }}
           >
             <Image
@@ -67,59 +58,49 @@ export default function GalleryPage() {
               alt={`Clinic Photo ${current + 1}`}
               fill
               priority
+              sizes="100vw"
               style={{
                 objectFit: "contain",
-                background: "#f5f5f5"
               }}
             />
           </div>
 
-          <button
-            onClick={prevSlide}
+          <div
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "20px",
-              transform: "translateY(-50%)",
-              border: "none",
-              background: "rgba(0,0,0,0.6)",
-              color: "#fff",
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              cursor: "pointer",
-              fontSize: "22px"
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "20px",
             }}
           >
-            ‹
-          </button>
+            <button
+              onClick={() =>
+                setCurrent(
+                  (current - 1 + images.length) % images.length
+                )
+              }
+              className="button button-secondary"
+            >
+              Previous
+            </button>
 
-          <button
-            onClick={nextSlide}
-            style={{
-              position: "absolute",
-              top: "50%",
-              right: "20px",
-              transform: "translateY(-50%)",
-              border: "none",
-              background: "rgba(0,0,0,0.6)",
-              color: "#fff",
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              cursor: "pointer",
-              fontSize: "22px"
-            }}
-          >
-            ›
-          </button>
+            <button
+              onClick={() =>
+                setCurrent(
+                  (current + 1) % images.length
+                )
+              }
+              className="button button-primary"
+            >
+              Next
+            </button>
+          </div>
 
           <div
             style={{
               display: "flex",
               justifyContent: "center",
               gap: "10px",
-              marginTop: "20px"
+              marginTop: "20px",
             }}
           >
             {images.map((_, index) => (
@@ -133,7 +114,9 @@ export default function GalleryPage() {
                   border: "none",
                   cursor: "pointer",
                   background:
-                    current === index ? "#1f7c7a" : "rgba(0,0,0,0.25)"
+                    current === index
+                      ? "#1f7c7a"
+                      : "rgba(0,0,0,0.25)",
                 }}
               />
             ))}
