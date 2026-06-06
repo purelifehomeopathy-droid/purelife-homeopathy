@@ -50,7 +50,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-media">
           <Image
-            src="/images/doctors/dr-jay-ratnani.jpg"
+            src="/images/clinic/doctor-profile.jpg"
             alt="Dr. Jay Ratnani - Homeopathic Doctor in Vadodara"
             fill
             priority
@@ -156,14 +156,15 @@ export default function HomePage() {
       <section className="section">
         <div className="container split-section">
           <div className="image-stack fade-in">
-            <div className="stack-main">
-              <Image
-                src="/images/clinic/clinic-interior.jpg"
-                alt="Clinic interior"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
+           <div className="stack-main">
+  <Image
+    src="/images/doctors/dr-jay-ratnani.jpg"
+    alt="Dr. Jay Ratnani"
+    fill
+    sizes="(max-width: 768px) 100vw, 50vw"
+    style={{ objectFit: "cover" }}
+  />
+</div>
 
             <div className="stack-card">
               <Image
