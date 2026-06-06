@@ -6,6 +6,52 @@ import { ServiceCard } from "@/components/service-card";
 import { featuredServices, services } from "@/data/services";
 import { address, phone } from "@/data/site";
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Can homeopathy help in piles (hemorrhoids)?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Homeopathic treatment aims to address the underlying factors associated with piles and may help reduce discomfort, bleeding, itching and recurrence through individualized treatment."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Can fissure be treated without surgery?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Many patients seek homeopathic treatment for fissure to help manage pain, burning and discomfort. The appropriate treatment approach depends on the individual condition and severity."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Is homeopathy useful for fistula?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Homeopathic treatment is individualized and focuses on the patient's overall health condition. A detailed consultation is necessary to assess the suitability of treatment for fistula."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Do you treat kidney stones, migraine and skin diseases?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Pure Life Homeopathy provides personalized treatment for kidney stones, migraine, psoriasis, eczema, hair fall, allergies and other chronic conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "How can I book an appointment with Dr. Jay Ratnani?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can book an appointment through the website contact form, WhatsApp, or by calling the clinic directly."
+      }
+    }
+  ]
+};
 const features = [
   {
     title: "Holistic Approach",
@@ -46,9 +92,15 @@ const processSteps = [
 
 export default function HomePage() {
   return (
-    <main>
-      <section className="hero">
-        <div className="hero-media">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema)
+        }}
+      />
+      <main>
+        <section className="hero">        <div className="hero-media">
           <Image
   src="/images/clinic/homeopathy-hero-banner.jpg"
   alt="Premium Homeopathy Clinic in Vadodara"
@@ -281,6 +333,51 @@ export default function HomePage() {
     </div>
   </div>
 </section>
+<section className="section">
+  <div className="container">
+    <SectionHeading
+      centered
+      title="Frequently Asked Questions"
+      description="Answers to common questions about homeopathic treatment for piles, fissure, fistula and chronic diseases."
+    />
+
+    <div className="prose-block">
+      <h3>Can homeopathy help in piles (hemorrhoids)?</h3>
+      <p>
+        Homeopathic treatment aims to address the underlying factors associated
+        with piles and may help reduce discomfort, bleeding, itching and
+        recurrence through individualized treatment.
+      </p>
+
+      <h3>Can fissure be treated without surgery?</h3>
+      <p>
+        Many patients seek homeopathic treatment for fissure to help manage pain,
+        burning and discomfort. The appropriate treatment approach depends on
+        the individual condition and severity.
+      </p>
+
+      <h3>Is homeopathy useful for fistula?</h3>
+      <p>
+        Homeopathic treatment is individualized and focuses on the patient's
+        overall health condition. A detailed consultation is necessary to assess
+        the suitability of treatment for fistula.
+      </p>
+
+      <h3>Do you treat kidney stones, migraine and skin diseases?</h3>
+      <p>
+        Yes. Pure Life Homeopathy provides personalized treatment for kidney
+        stones, migraine, psoriasis, eczema, hair fall, allergies and other
+        chronic conditions.
+      </p>
+
+      <h3>How can I book an appointment with Dr. Jay Ratnani?</h3>
+      <p>
+        You can book an appointment through the website contact form, WhatsApp,
+        or by calling the clinic directly.
+      </p>
+    </div>
+  </div>
+</section>
 
       <section className="section">
         <div className="container callout">
@@ -305,5 +402,6 @@ export default function HomePage() {
         </div>
       </section>
     </main>
+    </>
   );
 }
