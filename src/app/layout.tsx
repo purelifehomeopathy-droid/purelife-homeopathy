@@ -19,15 +19,13 @@ const robotoCondensed = Roboto_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://purelifehomeopathy.in"),
 
-  title: {
-    default:
-      "Pure Life Homeopathy | Homeopathic Clinic in Vadodara | Dr. Jay Ratnani",
-    template: `%s | Pure Life Homeopathy`
-  },
+ title: {
+  default: "Homeopathic Clinic in Vadodara | Dr. Jay Ratnani",
+  template: "%s | Pure Life Homeopathy"
+},
 
-  description:
-    "Pure Life Homeopathy is a trusted homeopathic clinic in Vadodara led by Dr. Jay Ratnani (BHMS), offering personalized treatment for Piles, Fissure, Fistula, Kidney Stones, Migraine, Hair Fall, Skin Diseases and other chronic conditions.",
-
+description:
+  "Homeopathic clinic in Vadodara led by Dr. Jay Ratnani. Treatment for piles, fissure, fistula, migraine, kidney stones, skin diseases and hair fall."
   keywords: [
     "Homeopathy Clinic Vadodara",
     "Homeopathic Doctor Vadodara",
@@ -42,9 +40,10 @@ export const metadata: Metadata = {
     "Homeopathy Vadodara"
   ],
 
-  alternates: {
-    canonical: "/"
-  },
+ metadataBase: new URL("https://purelifehomeopathy.in"),
+alternates: {
+  canonical: "/"
+},
 
   openGraph: {
     title:
@@ -65,9 +64,10 @@ export const metadata: Metadata = {
       "Specialized homeopathic treatment for Piles, Fissure, Fistula, Kidney Stones, Migraine and chronic diseases."
   },
 
-  icons: {
-    icon: "/favicon.png"
-  }
+ icons: {
+  icon: "/favicon.png",
+  apple: "/apple-touch-icon.png"
+}
 };
 
 export default function RootLayout({

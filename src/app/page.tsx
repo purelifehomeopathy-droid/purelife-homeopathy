@@ -52,6 +52,22 @@ const faqSchema = {
     }
   ]
 };
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: "Pure Life Homeopathy",
+  url: "https://purelifehomeopathy.in",
+  telephone: "+919023806955",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      "FF/3, Rutushree Complex, Makarpura Road, Opp. Kabir Plaza, Manjalpur",
+    addressLocality: "Vadodara",
+    addressRegion: "Gujarat",
+    postalCode: "390010",
+    addressCountry: "IN"
+  }
+};
 const features = [
   {
     title: "Holistic Approach",
@@ -93,13 +109,21 @@ const processSteps = [
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema)
-        }}
-      />
-      <main>
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(faqSchema)
+    }}
+  />
+
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(localBusinessSchema)
+    }}
+  />
+
+  <main>
         <section className="hero">        <div className="hero-media">
           <Image
   src="/images/clinic/homeopathy-hero-banner.jpg"
@@ -189,11 +213,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-soft">
-        <div className="container">
-          <SectionHeading
-            centered
-            title="Our Services"
+<section className="section">
+  <div className="container">
+    <p
+      style={{
+        maxWidth: "900px",
+        margin: "0 auto",
+        textAlign: "center",
+        fontSize: "1.1rem",
+        lineHeight: "1.9"
+      }}
+    >
+      At Pure Life Homeopathy, we provide the best homeopathic treatment
+      for piles, fissure and fistula in Vadodara through personalized
+      care, detailed case evaluation and long-term management strategies.
+    </p>
+  </div>
+</section>
+
+<section className="section section-soft">
+  <div className="container">
+    <SectionHeading
+      centered
+      title="Our Services"
             description="Specialized homeopathic treatments designed to address chronic and recurring health conditions through personalized, root-cause-focused care."
           />
 
