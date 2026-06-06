@@ -25,20 +25,21 @@ export const metadata: Metadata = {
 },
 
 description:
-  "Homeopathic clinic in Vadodara led by Dr. Jay Ratnani. Treatment for piles, fissure, fistula, migraine, kidney stones, skin diseases and hair fall."
-  keywords: [
-    "Homeopathy Clinic Vadodara",
-    "Homeopathic Doctor Vadodara",
-    "Dr Jay Ratnani",
-    "Piles Treatment Vadodara",
-    "Fissure Treatment Vadodara",
-    "Fistula Treatment Vadodara",
-    "Kidney Stone Treatment Vadodara",
-    "Migraine Treatment Vadodara",
-    "Hair Fall Treatment Vadodara",
-    "Skin Disease Treatment Vadodara",
-    "Homeopathy Vadodara"
-  ],
+  "Homeopathic clinic in Vadodara led by Dr. Jay Ratnani. Treatment for piles, fissure, fistula, migraine, kidney stones, skin diseases and hair fall.",
+
+keywords: [
+  "Homeopathy Clinic Vadodara",
+  "Homeopathic Doctor Vadodara",
+  "Dr Jay Ratnani",
+  "Piles Treatment Vadodara",
+  "Fissure Treatment Vadodara",
+  "Fistula Treatment Vadodara",
+  "Kidney Stone Treatment Vadodara",
+  "Migraine Treatment Vadodara",
+  "Hair Fall Treatment Vadodara",
+  "Skin Disease Treatment Vadodara",
+  "Homeopathy Vadodara"
+],
 
  metadataBase: new URL("https://purelifehomeopathy.in"),
 alternates: {
