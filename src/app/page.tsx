@@ -50,8 +50,8 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-media">
           <Image
-            src="/images/clinic/doctor-profile.jpg"
-            alt="Pure Life Homeopathy clinic"
+            src="/images/doctors/dr-jay-ratnani.jpg"
+            alt="Dr. Jay Ratnani - Homeopathic Doctor in Vadodara"
             fill
             priority
             sizes="100vw"
@@ -64,14 +64,18 @@ export default function HomePage() {
             <span className="eyebrow">Pure Life Homeopathy • Vadodara</span>
 
             <h1>
-              Expert Homeopathic Treatment for Piles, Fissure & Fistula
-            </h1>
+  Best Homeopathic Treatment for Piles, Fissure & Fistula in Vadodara
+</h1>
 
             <p>
-              Specialized non-surgical treatment for Piles, Fissure and Fistula.
-              We also provide personalized care for Migraine, Kidney Stones,
-              Skin Disorders, Hair Fall and other chronic health conditions.
-            </p>
+  Pure Life Homeopathy offers specialized homeopathic treatment for
+  Piles (Hemorrhoids), Anal Fissure and Fistula in Vadodara under the
+  guidance of Dr. Jay Ratnani (BHMS). Our approach focuses on treating
+  the root cause of disease, helping patients achieve long-term relief
+  without surgery whenever possible. We also provide personalized
+  treatment for Kidney Stones, Migraine, Hair Fall, Skin Diseases,
+  Allergies and other chronic health conditions.
+</p>
 
             <div
               style={{
@@ -174,24 +178,45 @@ export default function HomePage() {
           <div className="split-copy fade-in">
             <span className="eyebrow">Welcome to Pure Life Homeopathy</span>
 
-            <h2>
-              Specialized Homeopathic Care for Piles, Fissure & Fistula in
-              Vadodara
-            </h2>
+<h2>
+  Trusted Homeopathic Clinic in Vadodara for Piles, Fissure,
+  Fistula & Chronic Diseases
+</h2>
 
-            <p>
-              Pure Life Homeopathy is a leading homeopathic clinic in Vadodara,
-              founded by Dr. Jay Ratnani, a dedicated homeopathic physician
-              committed to personalized and patient-centered care.
-            </p>
+<p>
+  Pure Life Homeopathy is a patient-focused homeopathic clinic in
+  Vadodara led by Dr. Jay Ratnani (BHMS). The clinic is dedicated
+  to providing evidence-informed, individualized homeopathic care
+  designed to address the root cause of illness rather than merely
+  suppressing symptoms.
+</p>
 
-            <p>
-              The clinic is known for specialized treatment of Piles, Fissure
-              and Fistula using safe and natural homeopathic remedies. We also
-              provide treatment for migraine, kidney stones, skin diseases,
-              hair disorders and other chronic health conditions with a
-              personalized approach.
-            </p>
+<p>
+  Over the years, many patients have consulted us for chronic and
+  recurring health conditions including piles, fissure, fistula,
+  kidney stones, migraine, hair fall, psoriasis, eczema, allergic
+  disorders and digestive complaints. Every treatment plan is
+  personalized after understanding the patient's medical history,
+  lifestyle, symptoms and overall health condition.
+</p>
+
+<p>
+  We are particularly known for our focused approach towards
+  anorectal disorders such as piles, fissure and fistula. Many
+  patients seek homeopathic treatment to avoid repeated discomfort,
+  dependency on temporary measures and invasive procedures whenever
+  suitable. Our goal is to provide safe, natural and long-term
+  management through individualized homeopathic medicines and
+  lifestyle guidance.
+</p>
+
+<p>
+  At Pure Life Homeopathy, we believe that every patient deserves
+  dedicated attention, honest guidance and a treatment plan tailored
+  to their unique needs. Our mission is to help patients achieve
+  lasting wellness through compassionate care and a holistic healing
+  approach.
+</p>
 
             <div className="feature-grid">
               {features.map((feature) => (
@@ -225,6 +250,36 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+<section className="section section-soft">
+  <div className="container">
+    <SectionHeading
+      centered
+      title="Why Patients Choose Pure Life Homeopathy"
+      description="A trusted destination for personalized homeopathic care in Vadodara."
+    />
+
+    <div className="prose-block">
+      <p>
+        Patients from Vadodara and nearby areas choose Pure Life
+        Homeopathy because of our individualized approach, detailed
+        case evaluation and commitment to long-term health outcomes.
+      </p>
+
+      <p>
+        We specialize in homeopathic treatment for piles, fissure,
+        fistula, kidney stones, migraine, hair fall and skin diseases.
+        Every case is evaluated thoroughly to understand the root
+        cause and create a treatment plan tailored to the patient.
+      </p>
+
+      <p>
+        Our objective is not simply temporary symptom relief but
+        helping patients improve overall health and quality of life
+        through safe, natural and personalized homeopathic care.
+      </p>
+    </div>
+  </div>
+</section>
 
       <section className="section">
         <div className="container callout">
