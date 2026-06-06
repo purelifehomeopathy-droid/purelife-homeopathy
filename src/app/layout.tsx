@@ -17,59 +17,59 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://purelifehomeopathy.in"),
+metadataBase: new URL("https://purelifehomeopathy.in"),
 
- title: {
-  default: "Homeopathic Clinic in Vadodara | Dr. Jay Ratnani",
-  template: "%s | Pure Life Homeopathy"
+title: {
+default: "Homeopathic Clinic in Vadodara | Dr. Jay Ratnani",
+template: "%s | Pure Life Homeopathy"
 },
 
 description:
-  "Homeopathic clinic in Vadodara led by Dr. Jay Ratnani. Treatment for piles, fissure, fistula, migraine, kidney stones, skin diseases and hair fall.",
+"Homeopathic clinic in Vadodara led by Dr. Jay Ratnani. Treatment for piles, fissure, fistula, migraine, kidney stones, skin diseases and hair fall.",
 
 keywords: [
-  "Homeopathy Clinic Vadodara",
-  "Homeopathic Doctor Vadodara",
-  "Dr Jay Ratnani",
-  "Piles Treatment Vadodara",
-  "Fissure Treatment Vadodara",
-  "Fistula Treatment Vadodara",
-  "Kidney Stone Treatment Vadodara",
-  "Migraine Treatment Vadodara",
-  "Hair Fall Treatment Vadodara",
-  "Skin Disease Treatment Vadodara",
-  "Homeopathy Vadodara"
+"Homeopathy Clinic Vadodara",
+"Homeopathic Doctor Vadodara",
+"Dr Jay Ratnani",
+"Piles Treatment Vadodara",
+"Fissure Treatment Vadodara",
+"Fistula Treatment Vadodara",
+"Kidney Stone Treatment Vadodara",
+"Migraine Treatment Vadodara",
+"Hair Fall Treatment Vadodara",
+"Skin Disease Treatment Vadodara",
+"Homeopathy Vadodara"
 ],
 
- metadataBase: new URL("https://purelifehomeopathy.in"),
 alternates: {
-  canonical: "/"
+canonical: "/"
 },
 
-  openGraph: {
-    title:
-      "Pure Life Homeopathy | Homeopathic Clinic in Vadodara | Dr. Jay Ratnani",
-    description:
-      "Specialized homeopathic treatment for Piles, Fissure, Fistula, Kidney Stones, Migraine, Hair Fall and chronic diseases in Vadodara.",
-    url: "https://purelifehomeopathy.in",
-    siteName: "Pure Life Homeopathy",
-    locale: "en_IN",
-    type: "website"
-  },
+openGraph: {
+title:
+"Pure Life Homeopathy | Homeopathic Clinic in Vadodara | Dr. Jay Ratnani",
+description:
+"Specialized homeopathic treatment for Piles, Fissure, Fistula, Kidney Stones, Migraine, Hair Fall and chronic diseases in Vadodara.",
+url: "https://purelifehomeopathy.in",
+siteName: "Pure Life Homeopathy",
+locale: "en_IN",
+type: "website"
+},
 
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Pure Life Homeopathy | Homeopathic Clinic in Vadodara",
-    description:
-      "Specialized homeopathic treatment for Piles, Fissure, Fistula, Kidney Stones, Migraine and chronic diseases."
-  },
+twitter: {
+card: "summary_large_image",
+title:
+"Pure Life Homeopathy | Homeopathic Clinic in Vadodara",
+description:
+"Specialized homeopathic treatment for Piles, Fissure, Fistula, Kidney Stones, Migraine and chronic diseases."
+},
 
- icons: {
-  icon: "/favicon.png",
-  apple: "/apple-touch-icon.png"
+icons: {
+icon: "/favicon.png",
+apple: "/apple-touch-icon.png"
 }
 };
+
 
 export default function RootLayout({
   children
