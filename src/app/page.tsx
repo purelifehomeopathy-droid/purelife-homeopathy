@@ -50,12 +50,12 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-media">
           <Image
-            src="/images/clinic/doctor-profile.jpg"
-            alt="Dr. Jay Ratnani - Homeopathic Doctor in Vadodara"
-            fill
-            priority
-            sizes="100vw"
-          />
+  src="/images/clinic/homeopathy-hero-banner.jpg"
+  alt="Premium Homeopathy Clinic in Vadodara"
+  fill
+  priority
+  sizes="100vw"
+/>
           <div className="hero-overlay" />
         </div>
 
