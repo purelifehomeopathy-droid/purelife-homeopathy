@@ -3,14 +3,18 @@ import { blogPosts } from "@/data/blogs";
 import { services } from "@/data/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const siteUrl = "https://purelifehomeopathy.in";
 
-  const staticPages = ["", "/doctors", "/blogs", "/gallery", "/contact-us"].map(
-    (path) => ({
-      url: `${siteUrl}${path}`,
-      lastModified: new Date()
-    })
-  );
+  const staticPages = [
+    "",
+    "/doctors",
+    "/blogs",
+    "/gallery",
+    "/contact-us"
+  ].map((path) => ({
+    url: `${siteUrl}${path}`,
+    lastModified: new Date()
+  }));
 
   const servicePages = services.map((service) => ({
     url: `${siteUrl}/services/${service.slug}`,
