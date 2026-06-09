@@ -10,6 +10,8 @@ export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const isServicesActive =
+    pathname === "/services" || pathname.startsWith("/services/");
 
   return (
     <header className="site-header">
@@ -54,13 +56,18 @@ export function Header() {
             </Link>
           ))}
 
-          <div className="nav-dropdown">
-            <button
-  type="button"
-  className="nav-dropdown-trigger"
->
-  Services
-</button>
+          <div
+            className={`nav-dropdown ${servicesOpen ? "is-open" : ""}`}
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+          >
+            <Link
+              href="/services"
+              className={`nav-dropdown-trigger ${isServicesActive ? "active" : ""}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              Services
+            </Link>
 
             <div className="nav-dropdown-menu">
               {serviceNav.map((item) => (

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { InquiryForm } from "@/components/forms";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
-import { featuredServices, services } from "@/data/services";
+import { featuredServices } from "@/data/services";
 import { address, phone } from "@/data/site";
 
 const faqSchema = {
@@ -435,7 +435,7 @@ export default function HomePage() {
             </Link>
 
             <Link
-              href={`/services/${services[0].slug}`}
+              href="/services"
               className="button button-secondary"
             >
               Explore Services
