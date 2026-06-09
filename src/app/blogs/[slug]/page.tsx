@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/data/blogs";
+import { clinicName } from "@/data/site";
 import { formatDate } from "@/lib/utils";
 
 type Params = {
@@ -18,8 +19,15 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!post) return {};
 
   return {
-    title: post.title,
-    description: post.excerpt
+    title: post.seoTitle,
+    description: post.metaDescription,
+    keywords: post.keywords,
+    openGraph: {
+      title: post.seoTitle,
+      description: post.metaDescription,
+      images: [post.image],
+      type: "article"
+    }
   };
 }
 
@@ -28,8 +36,34 @@ export default async function BlogDetailPage({ params }: Params) {
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.metaDescription,
+    image: [post.image],
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    articleSection: post.category,
+    keywords: post.keywords.join(", "),
+    author: {
+      "@type": "Organization",
+      name: clinicName
+    },
+    publisher: {
+      "@type": "Organization",
+      name: clinicName
+    }
+  };
+
   return (
     <main className="inner-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema)
+        }}
+      />
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">{post.category}</span>
@@ -43,8 +77,35 @@ export default async function BlogDetailPage({ params }: Params) {
             <Image src={post.image} alt={post.title} width={1000} height={620} />
           </div>
           <div className="article-prose">
-            {post.content.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+            {post.content.map((section) => (
+              <section key={section.heading} className="article-section">
+                <h2>{section.heading}</h2>
+                {section.paragraphs?.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+                {section.bullets ? (
+                  <ul>
+                    {section.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                ) : null}
+                {section.subSections?.map((subSection) => (
+                  <div key={subSection.heading} className="article-subsection">
+                    <h3>{subSection.heading}</h3>
+                    {subSection.paragraphs?.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                    {subSection.bullets ? (
+                      <ul>
+                        {subSection.bullets.map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                ))}
+              </section>
             ))}
           </div>
         </article>

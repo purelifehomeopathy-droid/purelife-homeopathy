@@ -23,9 +23,21 @@ export type Service = {
 export type BlogPost = {
   slug: string;
   title: string;
-  excerpt: string;
   category: string;
   publishedAt: string;
   image: string;
-  content: string[];
+  excerpt: string;
+  seoTitle: string;
+  metaDescription: string;
+  keywords: string[];
+  content: {
+    heading: string;
+    paragraphs?: string[];
+    bullets?: string[];
+    subSections?: {
+      heading: string;
+      paragraphs?: string[];
+      bullets?: string[];
+    }[];
+  }[];
 };

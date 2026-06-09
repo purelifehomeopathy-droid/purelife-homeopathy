@@ -579,6 +579,25 @@ h3 {
   margin-top: 28px;
 }
 
+.article-prose h2 {
+  margin: 40px 0 14px;
+}
+
+.article-prose h3 {
+  margin: 28px 0 10px;
+}
+
+.article-prose ul {
+  margin: 0 0 18px;
+  padding-left: 24px;
+}
+
+.article-prose li {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
 .masonry-grid {
   columns: 3;
   column-gap: 24px;

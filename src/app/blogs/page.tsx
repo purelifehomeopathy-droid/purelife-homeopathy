@@ -21,7 +21,6 @@ export default function BlogsPage() {
         <div className="container">
           <SectionHeading
             title="Blog Articles"
-            description="This section is fully editable. Add, remove, or update posts in one content file and the pages update automatically."
           />
           <div className="blog-grid">
             {blogPosts.map((post) => (
