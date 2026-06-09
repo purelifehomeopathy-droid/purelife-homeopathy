@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Condensed } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -119,7 +120,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-        <WhatsAppButton />
+<WhatsAppButton />
+<GoogleAnalytics gaId="G-4C2ZMSNKQ1" />
       </body>
     </html>
   );
