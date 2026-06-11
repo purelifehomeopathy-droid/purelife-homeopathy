@@ -70,10 +70,11 @@ export function Header() {
             </Link>
 
             <div className="nav-dropdown-menu">
-              {serviceNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
+             {serviceNav.map((item, index) => (
+               <Link
+  key={item.href}
+  href={item.href}
+  className={index === 0 ? "featured-service" : ""}
                   onClick={() => {
                     setMenuOpen(false);
                     setServicesOpen(false);

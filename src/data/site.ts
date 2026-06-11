@@ -17,17 +17,17 @@ export const socialLinks = [
 ];
 
 export const serviceNav: LinkItem[] = [
+  { label: "Piles, Fissure & Fistula", href: "/services/piles-fissures" },
+  { label: "Kidney Stones", href: "/services/kidney-stones" },
+  { label: "Migraine & Headaches", href: "/services/migraine-headaches" },
+  { label: "Skin Diseases", href: "/services/skin-diseases" },
+  { label: "Hair & Scalp Disorders", href: "/services/hair-scalp-disorders" },
   { label: "Digestive Disorders", href: "/services/digestive-disorders" },
   { label: "Respiratory Disorders", href: "/services/respiratory-disorders" },
-  { label: "Migraine & Headaches", href: "/services/migraine-headaches" },
   {
     label: "Joint & Musculoskeletal Problems",
     href: "/services/joint-musculoskeletal-problems"
-  },
-  { label: "Kidney Stones", href: "/services/kidney-stones" },
-  { label: "Hair & Scalp Disorders", href: "/services/hair-scalp-disorders" },
-  { label: "Skin Diseases", href: "/services/skin-diseases" },
-  { label: "Piles & Fissures", href: "/services/piles-fissures" }
+  }
 ];
 
 export const mainNav: LinkItem[] = [

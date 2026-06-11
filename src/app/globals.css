@@ -792,3 +792,88 @@ h3 {
     padding: 72px 0;
   }
 }
+
+.appointment-intro {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.appointment-intro h3 {
+  margin-bottom: 14px;
+  color: var(--brand-dark);
+  font-size: 2rem;
+}
+
+.appointment-intro p {
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+
+.appointment-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.appointment-features li {
+  padding: 6px 0;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.appointment-features li::before {
+  content: "✓ ";
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.hero-form .form-card {
+  border-radius: 30px;
+  padding: 36px;
+}
+
+.hero-form .button-primary {
+  width: 100%;
+  height: 56px;
+  font-size: 1.1rem;
+}
+
+.form-success,
+.form-error {
+  margin-top: 16px;
+}
+
+.featured-service {
+  color: var(--brand) !important;
+  font-weight: 700;
+}
+
+.featured-service:hover {
+  color: var(--brand-dark) !important;
+}
+
+.footer-logo {
+  width: 90px;
+  height: 90px;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.footer-logo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-doctor {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  margin: 8px 0 14px;
+  line-height: 1.6;
+}

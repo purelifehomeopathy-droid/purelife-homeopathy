@@ -6,12 +6,26 @@ export function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <h3>{clinicName}</h3>
-          <p>
-            Personalized homeopathic care focused on long-term healing, patient
-            comfort, and natural wellness.
-          </p>
-        </div>
+  <div className="footer-logo">
+    <img
+      src="/images/clinic/logo.png"
+      alt="Pure Life Homeopathy"
+    />
+  </div>
+
+  <h3>{clinicName}</h3>
+
+  <p className="footer-doctor">
+    Dr. Jay Ratnani (BHMS)
+    <br />
+    Homeopathic Physician
+  </p>
+
+  <p>
+    Personalized homeopathic care focused on long-term healing, patient
+    comfort, and natural wellness.
+  </p>
+</div>
         <div>
           <h4>Quick Links</h4>
           <ul>
@@ -25,7 +39,7 @@ export function Footer() {
         <div>
           <h4>Services</h4>
           <ul>
-            {serviceNav.slice(0, 5).map((item) => (
+            {serviceNav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href}>{item.label}</Link>
               </li>
