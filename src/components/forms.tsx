@@ -19,24 +19,22 @@ const fieldSets = {
       required: true
     }
   ],
-  appointment: [
-    { name: "name", label: "Full Name", type: "text", required: true },
-    { name: "mobile", label: "Phone Number", type: "tel", required: true },
-    { name: "email", label: "Email", type: "email", required: true },
-    { name: "preferredDate", label: "Preferred Date", type: "date", required: true },
-    { name: "message", label: "Symptoms or Notes", type: "text", required: true }
-  ]
+ appointment: [
+  { name: "name", label: "Full Name", type: "text", required: true },
+  { name: "mobile", label: "Phone Number", type: "tel", required: true },
+  { name: "preferredDate", label: "Preferred Date", type: "date", required: true },
+  { name: "message", label: "Health Concern / Symptoms", type: "text", required: true }
+]
 } as const;
 
 const initialStates = {
   contact: { name: "", mobile: "", age: "", gender: "", concern: "" },
   appointment: {
-    name: "",
-    mobile: "",
-    email: "",
-    preferredDate: "",
-    message: ""
-  }
+  name: "",
+  mobile: "",
+  preferredDate: "",
+  message: ""
+}
 };
 
 export function InquiryForm({ formType }: ContactFormProps) {
@@ -71,33 +69,60 @@ export function InquiryForm({ formType }: ContactFormProps) {
   }
 
   return (
-    <form className="form-card" onSubmit={onSubmit}>
-      <div className="form-grid">
-        {fieldSets[formType].map((field) => (
-          <label key={field.name} className="field">
-            <span>{field.label}</span>
-            <input
-              type={field.type}
-              name={field.name}
-              required={field.required}
-              value={values[field.name as keyof typeof values]}
-              onChange={(event) =>
-                setValues((current) => ({
-                  ...current,
-                  [field.name]: event.target.value
-                }))
-              }
-            />
-          </label>
-        ))}
-      </div>
-      <button className="button button-primary" disabled={status === "submitting"}>
-        {status === "submitting" ? "Sending..." : "Send"}
-      </button>
-      {status === "success" ? (
-        <p className="form-success">Your submission has been sent successfully.</p>
-      ) : null}
-      {status === "error" ? <p className="form-error">{error}</p> : null}
-    </form>
-  );
+  <form className="form-card" onSubmit={onSubmit}>
+    <div className="appointment-intro">
+      <h3>Book Your Consultation</h3>
+
+      <p>
+        Personalized homeopathic treatment for chronic and acute health conditions.
+      </p>
+
+      <ul className="appointment-features">
+        <li>Experienced Homeopathic Care</li>
+        <li>Clinic & Online Consultation Available</li>
+        <li>Personalized Treatment Plans</li>
+        <li>Quick Appointment Confirmation</li>
+      </ul>
+    </div>
+
+    <div className="form-grid">
+      {fieldSets[formType].map((field) => (
+        <label key={field.name} className="field">
+          <span>{field.label}</span>
+          <input
+            type={field.type}
+            name={field.name}
+            required={field.required}
+            value={values[field.name as keyof typeof values]}
+            onChange={(event) =>
+              setValues((current) => ({
+                ...current,
+                [field.name]: event.target.value
+              }))
+            }
+          />
+        </label>
+      ))}
+    </div>
+
+    <button
+      className="button button-primary"
+      disabled={status === "submitting"}
+    >
+      {status === "submitting"
+        ? "Booking..."
+        : "Book Consultation"}
+    </button>
+
+    {status === "success" ? (
+      <p className="form-success">
+        Thank you. Our team will contact you shortly to confirm your appointment.
+      </p>
+    ) : null}
+
+       {status === "error" ? (
+      <p className="form-error">{error}</p>
+    ) : null}
+  </form>
+);
 }
