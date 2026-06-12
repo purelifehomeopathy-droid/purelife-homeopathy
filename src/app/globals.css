@@ -326,6 +326,15 @@ h1 {
   background: var(--surface-alt);
 }
 
+.field select {
+  height: 52px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  padding: 0 16px;
+  font: inherit;
+  background: var(--surface-alt);
+  width: 100%;
+}
 .form-success {
   color: #0d7f53;
 }

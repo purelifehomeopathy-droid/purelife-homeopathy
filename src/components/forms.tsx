@@ -23,18 +23,30 @@ const fieldSets = {
   { name: "name", label: "Full Name", type: "text", required: true },
   { name: "mobile", label: "Phone Number", type: "tel", required: true },
   { name: "preferredDate", label: "Preferred Date", type: "date", required: true },
-  { name: "message", label: "Health Concern / Symptoms", type: "text", required: true }
+  {
+  name: "condition",
+  label: "Select Condition",
+  type: "select",
+  required: true
+},
+{
+  name: "message",
+  label: "Additional Notes (Optional)",
+  type: "text",
+  required: false
+}
 ]
 } as const;
 
 const initialStates = {
   contact: { name: "", mobile: "", age: "", gender: "", concern: "" },
   appointment: {
-  name: "",
-  mobile: "",
-  preferredDate: "",
-  message: ""
-}
+    name: "",
+    mobile: "",
+    preferredDate: "",
+    condition: "",
+    message: ""
+  }
 };
 
 export function InquiryForm({ formType }: ContactFormProps) {
@@ -85,25 +97,60 @@ export function InquiryForm({ formType }: ContactFormProps) {
       </ul>
     </div>
 
-    <div className="form-grid">
-      {fieldSets[formType].map((field) => (
-        <label key={field.name} className="field">
-          <span>{field.label}</span>
-          <input
-            type={field.type}
-            name={field.name}
-            required={field.required}
-            value={values[field.name as keyof typeof values]}
-            onChange={(event) =>
-              setValues((current) => ({
-                ...current,
-                [field.name]: event.target.value
-              }))
-            }
-          />
-        </label>
-      ))}
-    </div>
+   <div className="form-grid">
+  {fieldSets[formType].map((field) => (
+    <label key={field.name} className="field">
+      <span>{field.label}</span>
+
+      {field.type === "select" ? (
+        <select
+          name={field.name}
+          required={field.required}
+          value={values[field.name as keyof typeof values]}
+          onChange={(event) =>
+            setValues((current) => ({
+              ...current,
+              [field.name]: event.target.value
+            }))
+          }
+        >
+          <option value="">Select Condition</option>
+          <option value="Piles / Fissure / Fistula">
+            Piles / Fissure / Fistula
+          </option>
+          <option value="Kidney Stones">Kidney Stones</option>
+          <option value="Migraine & Headaches">
+            Migraine & Headaches
+          </option>
+          <option value="Skin Diseases">Skin Diseases</option>
+          <option value="Hair Fall">Hair Fall</option>
+          <option value="Digestive Disorders">
+            Digestive Disorders
+          </option>
+          <option value="Respiratory Disorders">
+            Respiratory Disorders
+          </option>
+          <option value="Joint Problems">Joint Problems</option>
+          <option value="Women's Health">Women's Health</option>
+          <option value="Other">Other</option>
+        </select>
+      ) : (
+        <input
+          type={field.type}
+          name={field.name}
+          required={field.required}
+          value={values[field.name as keyof typeof values]}
+          onChange={(event) =>
+            setValues((current) => ({
+              ...current,
+              [field.name]: event.target.value
+            }))
+          }
+        />
+      )}
+    </label>
+  ))}
+</div>
 
     <button
       className="button button-primary"

@@ -78,9 +78,9 @@ const features = [
     text: "Customized treatments tailored to individual skin, hair, and health needs."
   },
   {
-    title: "Advanced Technology",
-    text: "Uses modern clinical methods for safe, effective, and thoughtful care."
-  },
+  title: "Experienced Guidance",
+  text: "Detailed case evaluation and individualized treatment under the care of Dr. Jay Ratnani."
+},
   {
     title: "Natural & Safe Solutions",
     text: "Gentle treatment plans designed for long-term relief and recovery."
@@ -89,20 +89,20 @@ const features = [
 
 const processSteps = [
   {
-    title: "Schedule an Appointment",
-    text: "Easily book your visit online or by phone to secure a convenient time."
+    title: "Book Your Appointment",
+    text: "Schedule your clinic or online consultation at a convenient time through phone, WhatsApp, or our appointment form."
   },
   {
-    title: "Conduct an Evaluation",
-    text: "Receive a detailed review of symptoms, health history, and current concerns."
+    title: "Detailed Consultation",
+    text: "Discuss your symptoms, medical history, lifestyle factors, and health concerns in a comprehensive one-on-one consultation."
   },
   {
-    title: "Administer Treatment",
-    text: "Get a personalized plan tailored to your condition, lifestyle, and recovery goals."
+    title: "Personalized Treatment Plan",
+    text: "Receive an individualized homeopathic treatment plan tailored to your condition, constitution, and long-term health goals."
   },
   {
-    title: "Process Payment",
-    text: "Finish the visit smoothly with clear next steps, follow-up guidance, and support."
+    title: "Follow-Up & Recovery Support",
+    text: "Regular follow-ups, progress monitoring, lifestyle guidance, and continued support throughout your healing journey."
   }
 ];
 
@@ -328,11 +328,11 @@ export default function HomePage() {
       <section className="section section-accent">
         <div className="container">
           <SectionHeading
-            eyebrow="How We Work"
-            title="Count on us to provide support and restore your well-being"
-            description="Efficient, patient-centered processes that combine expertise, compassionate care, and practical guidance."
-            centered
-          />
+  eyebrow="Our Treatment Approach"
+  title="Personalized Homeopathic Care Focused on Long-Term Healing"
+  description="From detailed consultation to individualized treatment and ongoing follow-up care, we focus on understanding the root cause and supporting lasting wellness."
+  centered
+/>
 
           <div className="process-grid">
             {processSteps.map((step, index) => (
