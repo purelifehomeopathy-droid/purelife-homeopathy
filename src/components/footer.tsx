@@ -47,17 +47,47 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4>Contact</h4>
-          <ul>
-            <li>{address}</li>
-            <li>
-              <a href={`tel:${phone}`}>{phone}</a>
-            </li>
-            <li>
-              <a href={`mailto:${email}`}>{email}</a>
-            </li>
-          </ul>
-        </div>
+  <h4>Contact</h4>
+  <ul>
+    <li>{address}</li>
+
+    <li>
+      <a href={`tel:${phone}`}>{phone}</a>
+    </li>
+
+    <li>
+      <a href={`mailto:${email}`}>{email}</a>
+    </li>
+  </ul>
+
+  <div className="social-links">
+    <h4>Follow Us</h4>
+
+    <a
+      href="https://www.instagram.com/pure_life_homeopathy?igsh=bzlrcmFuYXNjd3l1"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Instagram
+    </a>
+
+    <a
+      href="https://www.facebook.com/share/1CLQ2dAjy9/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Facebook
+    </a>
+
+    <a
+      href="https://youtube.com/@purelifehomeopathy-e2i?si=TeKAeqGfUKws3Xeo"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      YouTube
+    </a>
+  </div>
+</div>
       </div>
       <div className="container footer-bottom">
         <p>© {new Date().getFullYear()} {clinicName}. All rights reserved.</p>
