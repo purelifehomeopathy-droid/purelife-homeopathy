@@ -106,6 +106,26 @@ const processSteps = [
   }
 ];
 
+
+
+const testimonials = [
+  {
+    name: "Bhavy Patel",
+    review:
+      "Personalized treatment and noticeable improvement in my chronic skin condition within a few weeks."
+  },
+  {
+    name: "Rathod Karan",
+    review:
+      "Hair fall reduced significantly with individualized homeopathic treatment. Professional and caring approach."
+  },
+  {
+    name: "Vinit Patel",
+    review:
+      "Experienced relief from migraine symptoms along with valuable lifestyle guidance."
+  }
+];
+
 export default function HomePage() {
   return (
     <>
@@ -349,6 +369,45 @@ export default function HomePage() {
   <div className="container">
     <SectionHeading
       centered
+      title="What Our Patients Say"
+      description="Experiences shared by patients who trusted Pure Life Homeopathy."
+    />
+
+    <div className="google-rating">
+      <h3>★★★★★ 5.0 Google Rating</h3>
+      <p>Trusted by patients across Vadodara</p>
+
+      <a
+        href="https://share.google/FzCYU7vrcQ5H5C8Gf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="button button-secondary"
+      >
+        View Google Reviews
+      </a>
+    </div>
+
+    <div className="feature-grid">
+      {testimonials.map((item, index) => (
+        <article key={index} className="mini-card">
+          <h3>★★★★★</h3>
+
+          <p className="testimonial-text">
+            "{item.review}"
+          </p>
+
+          <div className="testimonial-author">
+            <strong>{item.name}</strong>
+            <span>Vadodara</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section><section className="section section-soft">
+  <div className="container">
+    <SectionHeading
+      centered
       title="Why Patients Choose Pure Life Homeopathy"
       description="A trusted destination for personalized homeopathic care in Vadodara."
     />
@@ -425,8 +484,13 @@ export default function HomePage() {
         <div className="container callout">
           <div>
             <span className="eyebrow">Visit the Clinic</span>
-            <h2>Personalized consultation and long-term wellness support</h2>
-            <p>{address}</p>
+            <h2>Book Your Consultation Today</h2>
+            <p>
+  Schedule a personalized consultation with Dr. Jay Ratnani and begin
+  your journey toward better health.
+</p>
+
+<p>{address}</p>
           </div>
 
           <div className="callout-actions">
