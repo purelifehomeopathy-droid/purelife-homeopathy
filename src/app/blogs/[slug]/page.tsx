@@ -56,14 +56,47 @@ export default async function BlogDetailPage({ params }: Params) {
     }
   };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "/"
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blogs",
+      item: "/blogs"
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: post.title
+    }
+  ]
+};
+
   return (
-    <main className="inner-page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(articleSchema)
-        }}
-      />
+  <main className="inner-page">
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(articleSchema)
+      }}
+    />
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(breadcrumbSchema)
+      }}
+    />
+
+    <section className="page-hero">
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">{post.category}</span>
@@ -74,7 +107,12 @@ export default async function BlogDetailPage({ params }: Params) {
       <section className="section">
         <article className="container article-layout">
           <div className="article-media">
-            <Image src={post.image} alt={post.title} width={1000} height={620} />
+            <Image
+  src={post.image}
+  alt={`${post.title} | Pure Life Homeopathy Vadodara`}
+  width={1000}
+  height={620}
+/>
           </div>
           <div className="article-prose">
             {post.content.map((section) => (
