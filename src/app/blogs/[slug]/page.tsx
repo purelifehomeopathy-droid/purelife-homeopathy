@@ -81,7 +81,8 @@ const breadcrumbSchema = {
 };
 
   return (
-  <main className="inner-page">
+  <>
+    <main className="inner-page">
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
@@ -96,14 +97,13 @@ const breadcrumbSchema = {
       }}
     />
 
-    <section className="page-hero">
-      <section className="page-hero">
-        <div className="container">
-          <span className="eyebrow">{post.category}</span>
-          <h1>{post.title}</h1>
-          <p className="hero-meta">{formatDate(post.publishedAt)}</p>
-        </div>
-      </section>
+   <section className="page-hero">
+  <div className="container">
+    <span className="eyebrow">{post.category}</span>
+    <h1>{post.title}</h1>
+    <p className="hero-meta">{formatDate(post.publishedAt)}</p>
+  </div>
+</section>
       <section className="section">
         <article className="container article-layout">
           <div className="article-media">
@@ -148,6 +148,7 @@ const breadcrumbSchema = {
           </div>
         </article>
       </section>
-    </main>
-  );
+       </main>
+  </>
+);
 }
