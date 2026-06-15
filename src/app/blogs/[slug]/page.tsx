@@ -64,18 +64,19 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "/"
+      item: "https://purelifehomeopathy.in"
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Blogs",
-      item: "/blogs"
+      item: "https://purelifehomeopathy.in/blogs"
     },
     {
       "@type": "ListItem",
       position: 3,
-      name: post.title
+      name: post.title,
+      item: `https://purelifehomeopathy.in/blogs/${post.slug}`
     }
   ]
 };
