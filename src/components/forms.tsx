@@ -383,12 +383,12 @@ setValues((current) => ({
     field.required ||
     (
       consultationMode !== "Clinic Visit" &&
-      [
-        "whatsapp",
-        "email",
-        "city",
-        "diseaseDuration"
-      ].includes(field.name)
+     [
+  "whatsapp",
+  "email",
+  "city",
+  "diseaseDuration"
+].includes(field.name as string)
     )
   }
     value={String(values[field.name as keyof typeof values] ?? "")}
