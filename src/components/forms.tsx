@@ -228,7 +228,7 @@ const response = await fetch("/api/submit-form", {
   </div>
 )}
    <div className="form-grid">
-  {fieldSets[formType].map((field) => {
+  {fieldSets[formType].map((field: any) => {
 
     if (
   formType === "appointment" &&
@@ -240,7 +240,7 @@ const response = await fetch("/api/submit-form", {
     "diseaseDuration",
     "currentMedicines",
     "reports"
-  ].includes(field.name)
+  ].includes(field.name as string)
 ) {
   return null;
 }
@@ -261,7 +261,7 @@ required={
       "email",
       "city",
       "diseaseDuration"
-    ].includes(field.name)
+    ].includes(field.name as string)
   )
 }
 value={String(values[field.name as keyof typeof values] ?? "")}
