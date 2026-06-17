@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 type SubmissionPayload = {
   formType: "contact" | "appointment";
   values: Record<string, string>;
+  reports?: File[];
 };
 
 const transporter = nodemailer.createTransport({
@@ -25,10 +26,14 @@ export async function sendSubmissionEmail(
     throw new Error("MAIL_FROM or SMTP_USER is not configured.");
   }
 
-  const subject =
-    payload.formType === "appointment"
-      ? "New Appointment Request - Pure Life Homeopathy"
-      : "New Contact Form Submission - Pure Life Homeopathy";
+ const subject =
+  payload.formType === "appointment"
+    ? `${
+        payload.values.consultationMode || "Appointment"
+      } - ${payload.values.name || "Patient"} - ${
+        payload.values.preferredDate || ""
+      }`
+    : `Contact Form - ${payload.values.name || "Visitor"}`;
 
   const html = `
     <div style="font-family: Arial, sans-serif; padding:20px;">
@@ -44,11 +49,27 @@ export async function sendSubmissionEmail(
     </div>
   `;
 
- await transporter.sendMail({
+ const attachments = [];
+
+if (payload.reports?.length) {
+  for (const file of payload.reports) {
+    const buffer = Buffer.from(
+      await file.arrayBuffer()
+    );
+
+    attachments.push({
+      filename: file.name,
+      content: buffer,
+    });
+  }
+}
+
+await transporter.sendMail({
   from: sender,
   to: recipient,
   subject,
   html,
+  attachments,
 });
 
 const patientEmail = payload.values.email;

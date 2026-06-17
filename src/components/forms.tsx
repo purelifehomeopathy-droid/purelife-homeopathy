@@ -143,13 +143,18 @@ currentMedicines: "",
 
 export function InquiryForm({ formType }: ContactFormProps) {
   const [values, setValues] = useState(initialStates[formType]);
-const consultationMode =
-  formType === "appointment"
-    ? (values as Record<string, string>).consultationMode
-    : "";
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
-    "idle"
-  );
+
+  const [reportFiles, setReportFiles] = useState<File[]>([]);
+
+  const consultationMode =
+    formType === "appointment"
+      ? (values as Record<string, string>).consultationMode
+      : "";
+
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+
   const [error, setError] = useState("");
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -157,11 +162,22 @@ const consultationMode =
     setStatus("submitting");
     setError("");
 
-    const response = await fetch("/api/submit-form", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ formType, values })
-    });
+    const formData = new FormData();
+
+formData.append("formType", formType);
+
+Object.entries(values).forEach(([key, value]) => {
+  formData.append(key, value);
+});
+
+reportFiles.forEach((file) => {
+  formData.append("reports", file);
+});
+
+const response = await fetch("/api/submit-form", {
+  method: "POST",
+  body: formData
+});
 
     if (!response.ok) {
       const payload = (await response.json().catch(() => null)) as
@@ -193,22 +209,41 @@ const consultationMode =
       </ul>
     </div>
 
+{consultationMode !== "Clinic Visit" &&
+ consultationMode !== "" && (
+  <div
+    style={{
+      marginBottom: "20px",
+      padding: "15px",
+      borderRadius: "8px",
+      background: "#f5f9ff"
+    }}
+  >
+    <strong>Online Consultation Details</strong>
+
+    <p style={{ marginTop: "8px" }}>
+      Please provide additional information and upload any relevant reports
+      to help us better understand your condition before the consultation.
+    </p>
+  </div>
+)}
    <div className="form-grid">
   {fieldSets[formType].map((field) => {
 
     if (
-      formType === "appointment" &&
-      consultationMode === "Clinic Visit" &&
-      [
-        "whatsapp",
-        "email",
-        "city",
-        "diseaseDuration",
-        "currentMedicines"
-      ].includes(field.name)
-    ) {
-      return null;
-    }
+  formType === "appointment" &&
+  consultationMode === "Clinic Visit" &&
+  [
+    "whatsapp",
+    "email",
+    "city",
+    "diseaseDuration",
+    "currentMedicines",
+    "reports"
+  ].includes(field.name)
+) {
+  return null;
+}
 
     return (
       <label key={field.name} className="field">
@@ -217,7 +252,18 @@ const consultationMode =
      {field.type === "select" ? (
 <select
 name={field.name}
-required={field.required}
+required={
+  field.required ||
+  (
+    consultationMode !== "Clinic Visit" &&
+    [
+      "whatsapp",
+      "email",
+      "city",
+      "diseaseDuration"
+    ].includes(field.name)
+  )
+}
 value={String(values[field.name as keyof typeof values] ?? "")}
 onChange={(event) =>
 setValues((current) => ({
@@ -286,22 +332,74 @@ setValues((current) => ({
 )}
 
 
-  </select>
-)
- : (
-        <input
+ </select>
+) : field.type === "file" ? (
+  <>
+    <input
+  type="file"
+  name={field.name}
+  accept=".pdf,.jpg,.jpeg,.png"
+  multiple
+  onChange={(event) => {
+    const files = Array.from(event.target.files || []);
+
+    const oversized = files.find(
+      (file) => file.size > 5 * 1024 * 1024
+    );
+
+    if (oversized) {
+      alert(`"${oversized.name}" exceeds 5 MB.`);
+      event.target.value = "";
+      return;
+    }
+
+    if (files.length > 5) {
+      alert("Maximum 5 files allowed.");
+      event.target.value = "";
+      return;
+    }
+
+    setReportFiles(files);
+  }}
+/>
+
+{reportFiles.length > 0 && (
+  <div style={{ marginTop: "10px", color: "green" }}>
+    <strong>Selected Files:</strong>
+
+    {reportFiles.map((file) => (
+      <div key={file.name}>
+        📄 {file.name}
+      </div>
+    ))}
+  </div>
+)}
+  </>
+) : (
+  <input
   type={field.type}
   name={field.name}
-  required={field.required}
-  value={String(values[field.name as keyof typeof values] ?? "")}
-  onChange={(event) =>
-    setValues((current) => ({
-      ...current,
-      [field.name]: event.target.value
-    }))
+  required={
+    field.required ||
+    (
+      consultationMode !== "Clinic Visit" &&
+      [
+        "whatsapp",
+        "email",
+        "city",
+        "diseaseDuration"
+      ].includes(field.name)
+    )
   }
-/>
-      )}
+    value={String(values[field.name as keyof typeof values] ?? "")}
+    onChange={(event) =>
+      setValues((current) => ({
+        ...current,
+        [field.name]: event.target.value
+      }))
+    }
+  />
+)}
     </label>
     );
   })}
