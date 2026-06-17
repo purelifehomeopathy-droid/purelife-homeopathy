@@ -44,10 +44,48 @@ export async function sendSubmissionEmail(
     </div>
   `;
 
+ await transporter.sendMail({
+  from: sender,
+  to: recipient,
+  subject,
+  html,
+});
+
+const patientEmail = payload.values.email;
+
+if (patientEmail) {
   await transporter.sendMail({
     from: sender,
-    to: recipient,
-    subject,
-    html,
+    to: patientEmail,
+    subject: "Consultation Request Received - Pure Life Homeopathy",
+    html: `
+      <div style="font-family:Arial,sans-serif;padding:20px;">
+        <h2>Thank You for Contacting Pure Life Homeopathy</h2>
+
+        <p>Dear ${payload.values.name || "Patient"},</p>
+
+        <p>
+          We have successfully received your consultation request.
+        </p>
+
+        <p>
+          Our team will review your details and contact you shortly to confirm your appointment.
+        </p>
+
+        <p>
+          If you have any urgent questions, you may contact us on WhatsApp:
+          +91 9023806955
+        </p>
+
+        <br />
+
+        <p>
+          Regards,<br />
+          Dr. Jay Ratnani<br />
+          Pure Life Homeopathy
+        </p>
+      </div>
+    `
   });
+}
 }

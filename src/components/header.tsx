@@ -86,12 +86,12 @@ export function Header() {
             </div>
           </div>
 
-          <Link
-            href="/contact-us#appointment"
-            className="button button-primary"
-          >
-            Book Appointment
-          </Link>
+         <Link
+  href="/consultation"
+  className="button button-primary"
+>
+  Book Consultation
+</Link>
         </nav>
       </div>
     </header>

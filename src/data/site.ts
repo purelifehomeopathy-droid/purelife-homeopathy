@@ -1,8 +1,7 @@
 import type { LinkItem } from "@/types";
 
 export const clinicName = "Pure Life Homeopathy";
-export const siteUrl = "https://example.com";
-
+export const siteUrl = "https://purelifehomeopathy.in";
 export const phone = "+91-9023806955";
 export const email = "purelifehomeopathy@gmail.com";
 export const whatsapp = "919023806955";
